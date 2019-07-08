@@ -15,8 +15,18 @@ module HelloWorld
       g.javascripts false
       g.stylesheets false
       g.helper false
-      g.test_framework false
+      g.test_framework :rspec,
+        fixtures: true,
+        fixture_replacement: :factory_bot,
+        view_specs: false,
+        routing_specs: false,
+        helper_specs: false,
+        controller_specs: false,
+        request_specs: true
     end
+
+    config.api_only = true
+    config.middleware.use ActionDispatch::Flash
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
